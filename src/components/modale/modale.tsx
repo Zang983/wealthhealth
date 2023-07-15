@@ -1,4 +1,4 @@
-import { useEffect, useRef, createElement } from "react"
+import { useEffect,  createElement, ReactElement } from "react"
 
 type ConfigObj = {
     classNameDialog?: undefined | string | null,
@@ -13,8 +13,8 @@ type ConfigObj = {
     idContent?: undefined | string | null,
     elementDialog?: "p",
     elementTitle?: "h3",
-    textDialog?: string,
-    textTitle?: string,
+    textDialog?: string | ReactElement,
+    textTitle?: string | ReactElement,
     primaryBtnText?: undefined | string | null,
     secondaryBtnText?: undefined | string | null,
     secondaryBtn?: boolean,
@@ -29,7 +29,10 @@ type Props = {
 }
 
 function CustomDialog({ customConfig, refDialog }: Props) {
-    const forCloseBack = useRef(null)
+
+    /**
+     * Initial config
+     */
     let Config = {
         classNameDialog: undefined,
         idDialog: undefined,
@@ -53,6 +56,7 @@ function CustomDialog({ customConfig, refDialog }: Props) {
         contentDialog: true,
         closeByBackground: true,
     }
+
 
     if (customConfig)
         Config = Object.assign(Config, customConfig)
@@ -78,22 +82,22 @@ function CustomDialog({ customConfig, refDialog }: Props) {
 
     return (
         <dialog ref={refDialog} className={Config.classNameDialog} id={Config.idDialog}>
-            <div ref={forCloseBack}>
-                {Config.secondaryBtn &&
-                    <button aria-label="Close dialog" className={Config.classNameSecondaryBtn} id={Config.idSecondaryBtn} onClick={() => closeModale()}>
-                        {Config.secondaryBtnText}
-                    </button>}
-                {Config.title &&
-                    createElement(Config.elementTitle, { className: Config.classNameTitle, id: Config.idTitle }, Config.textTitle)
-                }
-                {Config.contentDialog &&
-                    createElement(Config.elementDialog, { className: Config.classNameContent, id: Config.idContent }, Config.textDialog)
-                }
-                {Config.primaryBtn &&
-                    <button aria-label="Close dialog" className={Config.classNamePrimaryBtn} id={Config.idPrimaryBtn} onClick={() => closeModale()}>
-                        {Config.primaryBtnText}
-                    </button>}
-            </div>
+
+            {Config.secondaryBtn &&
+                <button aria-label="Close dialog" className={Config.classNameSecondaryBtn} id={Config.idSecondaryBtn} onClick={() => closeModale()}>
+                    {Config.secondaryBtnText}
+                </button>}
+            {Config.title &&
+                createElement(Config.elementTitle, { className: Config.classNameTitle, id: Config.idTitle }, Config.textTitle)
+            }
+            {Config.contentDialog &&
+                createElement(Config.elementDialog, { className: Config.classNameContent, id: Config.idContent }, Config.textDialog)
+            }
+            {Config.primaryBtn &&
+                <button aria-label="Close dialog" className={Config.classNamePrimaryBtn} id={Config.idPrimaryBtn} onClick={() => closeModale()}>
+                    {Config.primaryBtnText}
+                </button>}
+
         </dialog>
     )
 }

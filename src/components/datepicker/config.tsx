@@ -1,7 +1,7 @@
 import { GlobalType, HeaderConfigType, CalendarConfigType, InputConfigType } from './types'
 export const globalConfig: GlobalType = {
     globalContainerClassName: "datepicker",
-    datepickerLang: "FR",
+    datepickerLang: "EN",
     iconCalendarClassName: "iconCalendar",
     iconCalendar: <button aria-label="Open datepicker">Toggle Datepicker</button>,
     iconCalendarHidden: false,
