@@ -1,0 +1,385 @@
+*{
+    padding:0;
+    margin:0;
+}
+body{
+    background-color:#16161a;
+    color:#94a1b2;
+    display:flex;
+    justify-content: center;
+    height:100vh;
+}
+a{
+    color:inherit;
+    text-decoration: none;
+}
+h1,h2,h3,h4,h5,h6{
+    color:#fffffe;
+}
+header{
+    width:100%;
+}
+h1{
+    font-size:3rem;
+    text-align: center;
+    margin-bottom:5px;
+}
+legend{
+    font-size:2rem;
+    text-align: center;
+    color:#fffffe;
+    padding:0 10px;
+}
+header p{
+    font-size:1.3rem;
+    font-weight:bold;
+}
+.newEmployeeForm{
+    padding:20px 50px;
+    margin-top:30px;
+    background-color: #010101;
+    border:1px solid #fffffe;
+    display:flex;
+    flex-direction: column;
+    border-radius:20px;
+}
+fieldset{
+    border-radius:15px;
+    padding:15px;
+    border-color:#7f5af0;
+}
+.primaryFieldset{
+    display:flex;
+    flex-direction: column;
+    gap:10px;
+    min-width:30vw;
+}
+.datesEmployeeContainer,.selectEmployee{
+    display:flex;
+    justify-content: space-between;
+    margin-top:10px;
+    gap:20px;
+}
+.primaryFieldset label{
+    display:flex;
+    flex-direction: column;
+    gap:5px;
+    font-size:18px;
+}
+input{
+    height:30px;
+    color:#72757e;
+    font-weight: bold;
+    font-size:16px;
+    padding-left:10px;
+    margin-top:2px;
+    margin-bottom:5px;
+}
+.inputContainer{
+    align-items: center;
+    width:100%;
+    position:relative;
+}
+.inputDatepickerInput {
+    position:relative;
+}
+.inputDatepickerInput button{
+    position:absolute;
+    top:50%;
+    right:15px;
+    font-size:110%;
+    background-color: inherit;
+    border:none;
+    transform: translateY(-62%);
+}
+.datepickerContainer{
+    background-color:#fffffe;
+    max-width:210px;
+    border-radius:15px;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+    position:absolute;
+    z-index:10;
+    border:1px solid black;
+}
+.datepickerContainer div,.datepickerContainer table{
+    width:95%;
+    padding:5px;
+    text-align: center;
+}
+.datepickerHeader{
+    box-sizing: border-box;
+    display:flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #72757e;
+}
+.datepickerHeaderMonthNavigation{
+    position:relative;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    margin:auto;
+}
+.datepickerHeaderMonthNavigation p{
+    width:80px;
+}
+.datepickerHeader button{
+    border:none;
+    background-color: inherit;
+    font-size:18px;
+    padding:0 5px;
+}
+.datepickerHeader select{
+    margin-right:10px;
+}
+.datepickerContainer table,td,th{
+    border-collapse: collapse;
+    border:1px solid black;
+}
+.datepickerContainer table th{
+    border-top:none;
+    font-size: 18px;
+}
+.datepickerContainer table{
+    margin:8px;
+}
+
+.datepickerContainer table td{
+    font-weight:bold;
+    width:29px;
+}
+.datepickerContainer table td:hover,.currentDay{
+    background-color:#7f5af0 ;
+    color:#fffffe
+}
+.previousMonth,.nextMonth{
+    background-color: rgb(228, 228, 228);
+    font-weight: 500;
+}
+.hidden
+{
+    display:none;
+}
+.containerSelect ul li,.selectedOption{
+    list-style-type: none;
+    height:70px;
+    border:1px solid black;
+    width:150px;
+    display:flex;
+    align-items: center;
+    padding-left : 10px;
+}
+.containerSelect{
+    position:relative;
+    width:200px;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom:20px;
+}
+.selectedOptionOpen::after,.selectedOptionClose::after{
+    content:''; 
+    display : inline-block;
+    height : 0;
+    width : 0;
+    border-right : 6px solid transparent;
+    border-bottom : 10px solid black;
+    border-left : 6px solid transparent;
+    position:absolute;
+    top:50%;
+    right:15px;
+    transform: translateY(50%);
+}
+.selectedOptionClose::after{
+transform: translateY(50%) rotate(-180deg);
+
+}
+.containerSelect button{
+    min-height:40px;
+    max-height:40px;
+    width:100%;
+    font-size:18px;
+    background-color: #fffffe;
+}
+.containerSelect ul{
+    max-height:500px;
+    overflow-y:auto;
+    position:absolute;
+    background-color:#fffffe;
+    bottom:0px;
+    transform: translateY(100%);
+    width:100%;
+    margin:0;
+    padding:0;
+    overflow-x: hidden;
+    z-index:10;
+}
+button[type="submit"]{
+    background-color: #7f5af0;
+    height : 80px;
+    width:170px;
+    margin:auto;
+    margin-top: 20px;
+    color:#fffffe;
+    font-size: 32px;
+    border:1px solid #fffffe;
+    border-radius: 10px;
+}
+.containerSelect li{
+    display:inline;
+    min-width:100%; 
+    max-width:100%;
+    font-size:18px;
+    font-weight: bold;
+}
+.preSelected{
+    background-color: #7f5af0;
+    color:#fffffe;
+}
+.containerSelectDepartment{
+    margin:auto;
+    width:250px;
+}
+dialog[open]{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    position:absolute;
+    top:50%;
+    left:50%;
+    z-index: 20;
+    width:400px;
+    height:150px;
+    transform: translate(-50%,-50%);
+    border:3px solid #7f5af0;
+    background-color: #fffffe;
+    color:#72757e;
+    font-size: 32px;
+}
+dialog[open] button{
+    position:absolute;
+    right:25px;
+    top:0px;
+    border:none;
+    background-color: inherit;
+}
+button:hover,.datepickerContainer table td:hover,.currentDay,.containerSelect ul li,.selectedOption,.containerSelect{
+    cursor: pointer;
+}
+
+dialog[open] button::after{
+    position: absolute;
+    display:block;
+    content:'\00d7';
+    font-size:30px;
+}
+.errorDatePickerDateFormat{
+    color:#7f5af0;
+    margin-top:2px;
+}
+
+/*Soft reset for all table.*/
+.MyTable, .MyTable * {
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+.MyTable{
+    margin-top:20px;
+    display:flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width:1024px;
+}
+
+.MyTable .MyTableHeader{
+    display:flex;
+    justify-content: space-between;
+    margin-bottom:20px;
+}
+.MyTable table{
+    border:2px solid #7f5af0;
+    border-collapse: collapse;
+    padding:20px 10px;
+    margin-bottom:15px;
+}
+.MyTable table th,
+.MyTable table tr,
+.MyTable table td{
+    border:1px solid #fffffe;
+}
+.MyTable table td,.MyTable table th{
+    padding : 5px 8px;
+    min-width:100px;
+}
+.MyTable th{
+     background-color: #7f5af0;
+     color:#fffffe;
+     text-transform: capitalize;
+
+}
+.MyTable .columnName {
+    display:flex;
+    justify-content:space-between;
+    align-items: center;
+
+}
+.MyTable .columnName .sortButton{
+    width:6px;
+    height:6px;
+    border:none;
+    padding:3px;
+    background-color: black;
+    border-radius:50%;
+    margin-left:10px;
+    margin-right:5px;
+}
+.MyTable .columnName .sortButton.columnAsc,.MyTable .columnName .sortButton.columnDesc{
+    width:0px;
+    height:0px;
+    margin-left:10px;
+    padding:0;
+    border-radius:0;
+    border:none;
+    border-right: 6px solid transparent;
+    border-left: 6px solid transparent;
+    border-bottom: 8px solid black;
+    background-color: inherit;
+}
+.MyTable .columnName .sortButton.columnDesc{
+    border-bottom: 8px solid black;
+    transform: rotate(180deg);
+}
+.sortButton:hover{
+    cursor: pointer;
+}
+tr{
+    background-color: azure;
+}
+tr:nth-child(odd){
+    background-color:rgb(220, 220, 220);
+}
+
+.MyTable .pagination{
+    display:flex;
+    justify-content: space-between;
+}
+.MyTable .paginationLinkPages{
+display:flex;
+gap:8px;
+}
+.MyTable .paginationNumber{
+    border:1px solid black;
+    padding:3px;
+}
+.MyTable .paginationNumber.active{
+    background-color: rgb(68, 162, 234);
+    color:#fffffe
+}
+.MyTable .paginationNumber:hover:not(.unSelectable){
+    cursor:pointer;
+    background-color: rgb(213, 210, 210);
+}
