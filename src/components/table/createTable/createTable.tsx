@@ -66,7 +66,7 @@ export default function CreateTable({ objectList, propertiesList, propertiesList
               <th key={key} scope="col">
                 <div className="columnName">
                   {property}
-                  <button className={`sortButton ${defineSort(actualSort, property)}`} onClick={() => {//we define the class of button for arrow direction
+                  <button className={`sortButton ${defineSort(actualSort, property)}`} aria-label="Sort button" onClick={() => {//we define the class of button for arrow direction
                     sortAsc(property); isSorted(true)//change parent's state
                   }}>
                   </button>

@@ -25,7 +25,7 @@ function SelectCustom({ optionList, customClassContainer, optionDefault = option
             dispatch({ type: 'close' })
     }
     //This function manages the focus via the label.
-    const focusBtn = (e: React.MouseEvent) => {
+    const focusBtn = () => {
         if (container.current?.contains(btnRef.current) && btnRef.current) {
             btnRef.current.focus()
             dispatch({ type: "isFocus" })
@@ -141,7 +141,7 @@ function SelectCustom({ optionList, customClassContainer, optionDefault = option
     }, [search])
     return (
         <div ref={container} className={customClassContainer} id={customId}>
-            {label && <label onClick={(e) => { focusBtn(e) }}>{labelTxt}</label>}
+            {label && <label onClick={() => { focusBtn() }}>{labelTxt}</label>}
             <button
                 ref={btnRef}
                 aria-label="Open list"

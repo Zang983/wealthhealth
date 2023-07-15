@@ -269,12 +269,32 @@ button:hover,.datepickerContainer table td:hover,.currentDay,.containerSelect ul
     cursor: pointer;
 }
 
-dialog[open] button::after{
+dialog[open] button {
     position: absolute;
-    display:block;
-    content:'\00d7';
-    font-size:30px;
-}
+    right: 25px;
+    top: 10px;
+    width: 8px;
+    height: 8px;
+    opacity: 0.7
+  }
+  dialog[open] button:hover {
+    opacity: 1;
+  }
+  dialog[open] button::before, dialog[open] button::after {
+    position: absolute;
+    left: 15px;
+    content: ' ';
+    height: 20px;
+    width: 2px;
+    background-color: #333;
+  }
+  dialog[open] button::before {
+    transform: rotate(45deg);
+  }
+  dialog[open] button::after {
+    transform: rotate(-45deg);
+  }
+
 .errorDatePickerDateFormat{
     color:#7f5af0;
     margin-top:2px;
@@ -310,6 +330,8 @@ dialog[open] button::after{
 .MyTable table tr,
 .MyTable table td{
     border:1px solid #fffffe;
+    color:#fffffe;
+    font-size:16px;
 }
 .MyTable table td,.MyTable table th{
     padding : 5px 8px;
@@ -357,10 +379,10 @@ dialog[open] button::after{
     cursor: pointer;
 }
 tr{
-    background-color: azure;
+    background-color: #9797b371;
 }
 tr:nth-child(odd){
-    background-color:rgb(220, 220, 220);
+    background-color:#7f5af032;
 }
 
 .MyTable .pagination{
