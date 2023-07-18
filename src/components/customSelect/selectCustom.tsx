@@ -1,5 +1,11 @@
 import { ReactNode, useEffect, useReducer, useRef, useState } from "react"
 import reducer from './reducer'
+interface State {
+    isOpen: boolean,
+    preSelected: number,
+    selected: number,
+    isFocus: boolean,
+}
 type Props = {
     optionList: string[],
     optionDefault?: string,
@@ -37,7 +43,7 @@ function SelectCustom({ optionList, customClassContainer, optionDefault = option
         toggleOpen()
     }
     //This function allows to handle the click outside the component.  
-    const handleClick = (e: MouseEvent) => {
+    const handleClickOut = (e: MouseEvent) => {
         const target = e.target as HTMLElement
         if (container.current && !container.current.contains(target)) {
             dispatch({ type: 'close' });
@@ -93,10 +99,10 @@ function SelectCustom({ optionList, customClassContainer, optionDefault = option
             }
         }
     }
-    const scrollToSelected = () => {
+    const scrollToSelected = (typeScroll:string,stateToCheck:string) => {
         if (ulRef.current && state.preSelected >= 0) {
-            const selectedLi = ulRef.current.querySelectorAll("li")[state.selected]
-            selectedLi.scrollIntoView({ behavior: "instant" })
+            const selectedLi = ulRef.current.querySelectorAll("li")[state[stateToCheck as keyof State] as number]
+            selectedLi.scrollIntoView({ behavior: typeScroll as ScrollBehavior})
         }
     }
     //add keyboard event listener
@@ -106,9 +112,9 @@ function SelectCustom({ optionList, customClassContainer, optionDefault = option
     }, [state.isOpen, state.isFocus])
     //add click event listener
     useEffect(() => {
-        document.addEventListener("click", handleClick)
+        document.addEventListener("click", handleClickOut)
         return () => {
-            document.removeEventListener("click", handleClick)
+            document.removeEventListener("click", handleClickOut)
         }
     }, [])
     //change style on each state modification
@@ -117,7 +123,7 @@ function SelectCustom({ optionList, customClassContainer, optionDefault = option
         setDefineChoice(optionList[state.selected])
     }, [state.selected, state.preSelected, state.isOpen, state.isFocus])
     useEffect(() => {
-        scrollToSelected();
+        scrollToSelected("instant","selected");
     }, [state.isOpen])
     //Search by user's input
     useEffect(() => {
@@ -128,10 +134,7 @@ function SelectCustom({ optionList, customClassContainer, optionDefault = option
                 if (!state.isOpen)
                     dispatch({ type: "validPreSelected" })
                 else {
-                    if (ulRef.current && state.preSelected >= 0) {
-                        const selectedLi = ulRef.current.querySelectorAll("li")[state.preSelected]
-                        selectedLi.scrollIntoView({ behavior: "smooth" })
-                    }
+                    scrollToSelected("smooth","preSelected")
                 }
             }
             setTimeout(() => {

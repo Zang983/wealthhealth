@@ -8,8 +8,7 @@ import { useAppDispatch } from '../hooks'
 import { addEmployee } from "./employeeSlice"
 import Header from "../components/Header"
 /**
- * Bug select : quand click sur un autre label avec un select de focus, ça met le deuxieme en focus sans perdre le premier.
- * Ajouter une fonction pour enregistrer l'abbréviation plutôt que le nom complet de l'état.
+ * Enregistrer l'abbréviation et l'état et cacher l'une des colonnes.
  */
 type State = {
     firstname: string,
