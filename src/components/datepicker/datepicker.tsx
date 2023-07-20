@@ -7,14 +7,14 @@ import { GlobalType, HeaderConfigType, CalendarConfigType, InputConfigType } fro
 import { globalConfig, headerConfig, inputDateConfig, calendarConfig } from "./config"
 
 interface Props {
-    date: Date,
+    date?: Date,
     setChoice: (formatedDate: string) => void,
     userGlobalConfig?: GlobalType,
     userHeaderConfig?: HeaderConfigType,
     userCalendarConfig?: CalendarConfigType,
     userInputConfig?: InputConfigType
 }
-export function Datepicker({ date, setChoice, userGlobalConfig, userHeaderConfig, userCalendarConfig, userInputConfig }: Props) {
+export function Datepicker({ date=new Date(), setChoice, userGlobalConfig, userHeaderConfig, userCalendarConfig, userInputConfig }: Props) {
     const tableRef = useRef<HTMLTableElement>(null)
     const [clickOut, setClickOut] = useState(false)
     const [state, dispatch] = useReducer(reducer, {

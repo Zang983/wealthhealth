@@ -81,7 +81,6 @@ export default function Index() {
                         </label>
                         <div className="datesEmployeeContainer">
                             <Datepicker
-                                date={new Date()}
                                 setChoice={handleChangeBirthdate}
                                 userGlobalConfig={{
                                     globalContainerClassName: "datepicker",
@@ -99,7 +98,6 @@ export default function Index() {
                                 }}
                             />
                             <Datepicker
-                                date={new Date()}
                                 setChoice={handleChangeStartDate}
                                 userGlobalConfig={{
                                     globalContainerClassName: "datepicker",
