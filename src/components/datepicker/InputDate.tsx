@@ -49,13 +49,12 @@ function InputDate({ state, dispatch, globalConfig, inputDateConfig, children }:
         regex = inputDateConfig.customRegex !== undefined ? inputDateConfig.customRegex : globalConfig.datepickerLang === "FR" ? inputDateConfig.regexDateFR : inputDateConfig.regexDateUS
 
         if (regex && regex.test(value) && checkCoherence(value)) {
-            dispatch({type:"isValid"})
+            dispatch({ type: "isValid" })
             return true
         }
-        else {
-            dispatch({type:"isUnvalid"})
-            return false
-        }
+        dispatch({ type: "isUnvalid" })
+        return false
+
     }
     const openCalendar = () => {
         if (inputDateConfig.openCalendar === true && !state.calendarStatus) {
@@ -101,7 +100,7 @@ function InputDate({ state, dispatch, globalConfig, inputDateConfig, children }:
     return (
         <>
             <label>{inputDateConfig.labelText}
-                <div className={inputDateConfig.inputClassName ? `${inputDateConfig.inputClassName}Input`:"Input"}>
+                <div className={inputDateConfig.inputClassName ? `${inputDateConfig.inputClassName}Input` : "Input"}>
                     <input className={inputDateConfig.inputClassName} type="text" value={date}
                         onFocus={() => { openCalendar() }}
                         onChange={e => handleChangeDate(e)} />

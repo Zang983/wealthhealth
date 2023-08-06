@@ -73,7 +73,7 @@ export default function MyTable({ data, uniqueID, hideColumn, columnReplaceName,
     for (const entry of data) {
       let toAdd = false
       for (const property in entry) {
-        if (new String(entry[property]).toLowerCase().includes(filter.toLowerCase()))
+        if (new String(entry[property]).toLowerCase().includes(filter.toLowerCase().trim()))
           toAdd = true
       }
       if (toAdd)
