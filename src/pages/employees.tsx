@@ -17,8 +17,8 @@ function Employees() {
                     "StartDate": "Start Date",
                     "ZipCode": "Zip Code",
                 }}
-                // resultNumber={10}
-                // resultNumberGap={5}
+                resultNumber={10}
+                resultNumberGap={5}
             />
 
         </>
