@@ -14,7 +14,7 @@ interface Props {
     userCalendarConfig?: CalendarConfigType,
     userInputConfig?: InputConfigType
 }
-export function Datepicker({ date=new Date(), setChoice, userGlobalConfig, userHeaderConfig, userCalendarConfig, userInputConfig }: Props) {
+export function Datepicker({ date=new Date(), setChoice, userGlobalConfig={}, userHeaderConfig={}, userCalendarConfig={}, userInputConfig={} }: Props) {
     const tableRef = useRef<HTMLTableElement>(null)
     const [clickOut, setClickOut] = useState(false)
     const [state, dispatch] = useReducer(reducer, {
