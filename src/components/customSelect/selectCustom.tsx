@@ -99,10 +99,10 @@ function SelectCustom({ optionList, customClassContainer, optionDefault = option
             }
         }
     }
-    const scrollToSelected = (typeScroll:string,stateToCheck:string) => {
+    const scrollToSelected = (typeScroll: string, stateToCheck: string) => {
         if (ulRef.current && state.preSelected >= 0) {
             const selectedLi = ulRef.current.querySelectorAll("li")[state[stateToCheck as keyof State] as number]
-            selectedLi.scrollIntoView({ behavior: typeScroll as ScrollBehavior})
+            selectedLi.scrollIntoView({ behavior: typeScroll as ScrollBehavior })
         }
     }
     //add keyboard event listener
@@ -123,7 +123,7 @@ function SelectCustom({ optionList, customClassContainer, optionDefault = option
         setDefineChoice(optionList[state.selected])
     }, [state.selected, state.preSelected, state.isOpen, state.isFocus])
     useEffect(() => {
-        scrollToSelected("instant","selected");
+        scrollToSelected("instant", "selected");
     }, [state.isOpen])
     //Search by user's input
     useEffect(() => {
@@ -134,7 +134,7 @@ function SelectCustom({ optionList, customClassContainer, optionDefault = option
                 if (!state.isOpen)
                     dispatch({ type: "validPreSelected" })
                 else {
-                    scrollToSelected("smooth","preSelected")
+                    scrollToSelected("smooth", "preSelected")
                 }
             }
             setTimeout(() => {
@@ -146,6 +146,8 @@ function SelectCustom({ optionList, customClassContainer, optionDefault = option
         <div ref={container} className={customClassContainer} id={customId}>
             {label && <label onClick={() => { focusBtn() }}>{labelTxt}</label>}
             <button
+                onFocus={() => dispatch({ type: "isFocus" })}
+                onBlur={() => dispatch({ type: "stopFocus" })}
                 ref={btnRef}
                 aria-label="Open list"
                 className={
