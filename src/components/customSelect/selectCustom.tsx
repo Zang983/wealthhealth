@@ -149,7 +149,7 @@ function SelectCustom({ optionList, customClassContainer, optionDefault = option
                 onFocus={() => dispatch({ type: "isFocus" })}
                 onBlur={() => dispatch({ type: "stopFocus" })}
                 ref={btnRef}
-                aria-label="Open list"
+                aria-label="Select option"
                 className={
                     `${state.isFocus ? 'selectedOptionFocused' : ''}
                  selectedOption ${customClass != undefined ? customClass : ""}
