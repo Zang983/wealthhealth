@@ -11,13 +11,7 @@ function Employees() {
                 data={selector}
                 uniqueID="test"
                 hideColumn={[]}
-                columnReplaceName={{
-                    "Firstname": "First name",
-                    "Lastname": "Last name",
-                    "StartDate": "Start Date",
-                    "ZipCode": "Zip Code",
-                }}
-                resultNumber={10}
+                resultNumber={5}
                 resultNumberGap={5}
             />
 
